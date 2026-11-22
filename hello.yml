@@ -1,0 +1,14 @@
+name: Hello CI              # Actions 탭에 표시될 이름
+
+on:
+  push:                     # 어떤 브랜치든 push하면 실행
+  workflow_dispatch:        # Actions 탭에서 버튼으로 수동 실행도 허용
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest  # GitHub가 제공하는 새 Ubuntu VM
+    steps:
+      - uses: actions/checkout@v5   # 저장소 코드를 VM으로 가져옴
+      - run: echo "Hello from CI!"
+      - run: uname -a && python3 --version   # 어떤 환경인지 구경
+      - run: ls -la                          # checkout된 파일 확인
